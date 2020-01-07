@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+<h1>please register for see the posts and likes them</h1> <a href="signup">signup</a>
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+<p><a href="{% url 'logout' %}">logout</a></p>
+<p><a href="{% url 'postpages' %}">posts</a></p>
+{% else %}
+<h1>please register for see the posts and likes them</h1> <a href="signup">signup</a>
+<h2>if u have already registered then please login</h2>
+
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
+
+
+

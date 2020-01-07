@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- i likes these post -->
+    <h1>i likes these post</h1>
+    {% for like_users in mylikes %}
+    <h2>title: {{like_users.post_id.title}}</h2>
+         <p>{{like_users.post_id.text}}</p><br>
+
+    {% endfor %}
+
+
+
+<!-- my posts likes these username -->
+
+
+<h1></h1>
+</body>
+</html>

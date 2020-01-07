@@ -1,0 +1,48 @@
+
+  <html><body>
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'mylikes' %}">mylikes</a></p>
+<p><a href="{% url 'myposts' %}">likes on my posts</a></p>
+
+
+<button onclick="window.location.href='newpost';">create new post</button>
+<br><br>
+
+<p>view all posts</p>
+{% for i in posts %}
+
+ author: {{i.author}}<br>
+ title{{i.title}}<br>
+ post:{{i.text}}<br>
+likes: {{i.likes}}<br>
+dislikes: {{i.dislikes}}<br>
+liked_by :{{i.like_id}}<br><br>
+
+ <form action="likes" method="POST">
+     {% csrf_token %}
+     <input type="hidden" value="{{i.post_id}}" name="post_id">
+     <button type="submit">like</button>
+ </form>
+<form action="dislikes" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{i.post_id}}" name="post_id">
+    <button type="submit">dislikes</button><br><br>
+
+</form>
+{% endfor %}
+    <p><a href="{% url 'logout' %}">logout</a></p>
+
+{% else %}
+<h1>please register for see the posts and likes them</h1> <a href="signup">signup</a>
+<h2>if u have already registered then please login</h2>
+
+    <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
+
+
+  </body></html>
